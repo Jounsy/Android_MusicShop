@@ -121,6 +121,7 @@
 
         <Button
             android:id="@+id/buttonPlus"
+            android:onClick="increaseQuantity"
             android:layout_width="40sp"
             android:layout_height="40sp"
             android:layout_below="@id/textQuantity"
@@ -145,6 +146,7 @@
 
         <Button
             android:id="@+id/buttonMinus"
+            android:onClick="decreaseQuantity"
             android:layout_width="40sp"
             android:layout_height="40sp"
             android:layout_below="@id/textQuantity"
