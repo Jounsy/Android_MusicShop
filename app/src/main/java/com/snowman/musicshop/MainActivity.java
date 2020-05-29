@@ -10,12 +10,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     int countItems = 0;
     Spinner spinner;
     ArrayList spinnerArrayList;
     ArrayAdapter spinnerAdapter;
+    Map goodsMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +31,17 @@ public class MainActivity extends AppCompatActivity {
         spinnerArrayList.add("Trombon");
         spinnerArrayList.add("Beats");
 
+        goodsMap = new HashMap<String,Double>();
+        goodsMap.put("Guitar",500);
+        goodsMap.put("Trombon",1000);
+        goodsMap.put("Beats",350);
+
         spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, spinnerArrayList);
         spinner.setAdapter(spinnerAdapter);
+        //добавить имплементацию и реализацию Listener для AdapterView
+        //реализовать через OnItemSelectedListener метод sumCostOfProduct
+
+
     }
 
     public void increaseQuantity(View view) {
@@ -46,4 +59,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void sumCostOfProduct(Double price, Integer count){
+        TextView summaText = findViewById(R.id.textDollarsCount);
+        summaText.setText("" + price * count);
+    }
 }
