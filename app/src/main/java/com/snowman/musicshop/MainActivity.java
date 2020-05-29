@@ -4,15 +4,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     int countItems = 0;
+    Spinner spinner;
+    ArrayList spinnerArrayList;
+    ArrayAdapter spinnerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        spinner = (Spinner)findViewById(R.id.spinner);
+        spinnerArrayList = new ArrayList();
+        spinnerArrayList.add("Guitar");
+        spinnerArrayList.add("Trombon");
+        spinnerArrayList.add("Beats");
+
+        spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, spinnerArrayList);
+        spinner.setAdapter(spinnerAdapter);
     }
 
     public void increaseQuantity(View view) {
@@ -29,5 +45,5 @@ public class MainActivity extends AppCompatActivity {
         else{quantity.setText("0");
         }
     }
-    
+
 }
