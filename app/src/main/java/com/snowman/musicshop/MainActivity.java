@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerArrayList = new ArrayList();
         spinnerArrayList.add("Guitar");
         spinnerArrayList.add("Trombon");
-        spinnerArrayList.add("Beats");
+        spinnerArrayList.add("Drums");
 
         goodsMap = new HashMap<String,Double>();
         goodsMap.put("Guitar",500d);
         goodsMap.put("Trombon",1000d);
-        goodsMap.put("Beats",350d);
+        goodsMap.put("Drums",350d);
 
         spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, spinnerArrayList);
         spinner.setAdapter(spinnerAdapter);
@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         goodsImageView = findViewById(R.id.goodsImageView);
         goodsName = spinner.getSelectedItem().toString();
+        changeItemImage(goodsName);
         Toast toast = Toast.makeText(getApplicationContext(),
                 "Товар выбран" + goodsName, Toast.LENGTH_SHORT);
         toast.show();
@@ -88,5 +89,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void changeItemImage (String itemName){
+        if (itemName.equals("Guitar")){
+            goodsImageView.setImageResource(R.drawable.triple_guitars);
+        } else if(itemName.equals("Trombon")){
+            goodsImageView.setImageResource(R.drawable.trombon);
+        } else if (itemName.equals("Drums")){
+            goodsImageView.setImageResource(R.drawable.drums);
+        }
     }
 }

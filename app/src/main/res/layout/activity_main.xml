@@ -70,8 +70,9 @@
             android:id="@+id/goodsImageView"
             android:layout_width="match_parent"
             android:layout_height="171dp"
-            android:layout_weight="1"
             android:layout_below="@id/spinner"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/triple_guitars" />
     </RelativeLayout>
 
