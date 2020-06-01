@@ -67,7 +67,7 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/imageSpinnerGuitars"
+            android:id="@+id/goodsImageView"
             android:layout_width="match_parent"
             android:layout_height="171dp"
             android:layout_weight="1"
