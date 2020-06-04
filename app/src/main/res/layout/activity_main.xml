@@ -8,13 +8,14 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/userNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Your name" />
+        android:text="Your name"
+        android:hint="Enter your name"/>
 
 
     <RelativeLayout
@@ -170,6 +171,7 @@
         android:layout_weight="1"
         android:background="@color/colorPrimaryDark"
         android:text="ADD TO CART"
+        android:onClick="addToCart"
         android:textColor="#FFFFFF" />
 
 </LinearLayout>

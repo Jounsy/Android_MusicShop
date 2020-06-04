@@ -3,10 +3,12 @@ package com.snowman.musicshop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ArrayList spinnerArrayList;
     ArrayAdapter spinnerAdapter;
     ImageView goodsImageView;
+    EditText getUserName;
 
     Map goodsMap;
     String goodsName;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getUserName = findViewById(R.id.userNameEditText);
         createSpinner();
         createMap();
 
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, spinnerArrayList);
         spinner.setAdapter(spinnerAdapter);
+
     }
 
     public void increaseQuantity(View view) {
@@ -86,9 +91,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         goodsImageView = findViewById(R.id.goodsImageView);
         goodsName = spinner.getSelectedItem().toString();
         changeItemImage(goodsName);
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "Товар выбран" + goodsName, Toast.LENGTH_SHORT);
-        toast.show();
         price = (double)goodsMap.get(goodsName);
         sumCostOfProduct(price,countItems);
     }
@@ -106,5 +108,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } else if (itemName.equals("Drums")){
             goodsImageView.setImageResource(R.drawable.drums);
         }
+    }
+
+    public void addToCart(View view) {
+
+        String userName = getUserName.getText().toString();
+
+        Order order = new Order(userName, goodsName, countItems, price);
+        //Log.d("addToCart", userName + " " + goodsName  + " " + countItems  + " " + price);
     }
 }
