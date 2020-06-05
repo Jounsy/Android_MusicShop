@@ -2,6 +2,7 @@ package com.snowman.musicshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -115,6 +116,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String userName = getUserName.getText().toString();
 
         Order order = new Order(userName, goodsName, countItems, price);
+        Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
+        orderIntent.putExtra("userName", order.userName);
+        orderIntent.putExtra("goodsName",order.goodsName);
+        orderIntent.putExtra("countItems",order.quantity);
+        orderIntent.putExtra("price", order.orderPrice);
+        startActivity(orderIntent);
         //Log.d("addToCart", userName + " " + goodsName  + " " + countItems  + " " + price);
     }
 }
