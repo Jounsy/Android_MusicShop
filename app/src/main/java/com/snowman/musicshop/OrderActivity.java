@@ -19,6 +19,7 @@ public class OrderActivity extends AppCompatActivity {
         int quantity = recievedIntent.getIntExtra("countItems",0);
         double orderPrice = recievedIntent.getDoubleExtra("price",0.0);
         TextView textView = findViewById(R.id.orderTextView);
-        textView.setText(userName + " заказал " + goodsName + " в количестве: " + quantity +"шт, общая стоимость заказа: " + orderPrice * quantity);
+        textView.setText("Customer Name: " + userName + "\n Goods name: " + goodsName + "\n Quantity: " + quantity +"\n Price: " + orderPrice + "\n Order price: " + orderPrice * quantity);
+        setTitle(R.string.order_activity_name);
     }
 }
