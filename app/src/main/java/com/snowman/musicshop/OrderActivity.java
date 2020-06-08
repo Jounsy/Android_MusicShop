@@ -29,13 +29,24 @@ public class OrderActivity extends AppCompatActivity {
         textView.setText(emailText);
         setTitle(R.string.order_activity_name);
     }
+    public void submitOrder(View view){
+         Intent intent = new Intent(Intent.ACTION_SEND);
+         intent.setType("text/plain");
+         intent.putExtra(Intent.EXTRA_TEXT, emailText);
+         Intent chosenIntent = Intent.createChooser(intent, "Choose application for send mail");
+          if (chosenIntent.resolveActivity(getPackageManager()) != null) {
+              startActivity(chosenIntent);
+          }
+}
 
-    public void submitOrder(View view) {
+    public void submitOrderOnMail(View view) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
+        //intent.setType("*.*"); // при комментировании нижней строки должно появляться диалоговое окно с выбором приложения
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         intent.putExtra(Intent.EXTRA_TEXT, emailText);
+
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }

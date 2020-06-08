@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="TextView" />
 
     <Button
@@ -19,6 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="SEND MAIL"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="SUBMIT ORDER"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
         android:onClick="submitOrder"/>
 </LinearLayout>
